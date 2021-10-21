@@ -1,8 +1,8 @@
 // ./src/App.tsx
 
-import React, { useState } from 'react';
-import Path from 'path';
-import uploadFileToBlob, { isStorageConfigured } from './azure-storage-blob';
+import React, { useState } from "react";
+import Path from "path";
+import uploadFileToBlob, { isStorageConfigured } from "./azure-storage-blob";
 
 const storageConfigured = isStorageConfigured();
 
@@ -41,12 +41,12 @@ const App = (): JSX.Element => {
   // display form
   const DisplayForm = () => (
     <div>
-      <input type="file" onChange={onFileChange} key={inputKey || ''} />
+      <input type="file" onChange={onFileChange} key={inputKey || ""} />
       <button type="submit" onClick={onFileUpload}>
         Upload!
-          </button>
+      </button>
     </div>
-  )
+  );
 
   // display file name and image
   const DisplayImagesFromContainer = () => (
@@ -70,16 +70,18 @@ const App = (): JSX.Element => {
 
   return (
     <div>
-      <h1>Upload file to Azure Blob Storage</h1>
+      <h1>Upload TXPOP Tool To Chat Box</h1>
       {storageConfigured && !uploading && DisplayForm()}
       {storageConfigured && uploading && <div>Uploading</div>}
       <hr />
       {storageConfigured && blobList.length > 0 && DisplayImagesFromContainer()}
-      {!storageConfigured && <div>Storage is not configured.</div>}
+      {!storageConfigured && (
+        <div>
+          You don't currently have access to the TXPOP Tools Upload Directories.
+        </div>
+      )}
     </div>
   );
 };
 
 export default App;
-
-
